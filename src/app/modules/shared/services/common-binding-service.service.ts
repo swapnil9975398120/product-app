@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CommonBindingServiceService {
+
+  constructor(
+    private translateService: TranslateService
+  ) { }
+
+  getLabel(string) {
+    let select;
+    this.translateService.get(string).subscribe(translatedValue => {
+      select = translatedValue;
+    });
+    return select;
+  }
+
+}

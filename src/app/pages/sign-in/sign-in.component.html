@@ -1,0 +1,60 @@
+<div class="loginForm">
+<h1>Please Login</h1>
+  <form [formGroup]='signInForm'>
+    <div class="form-field ui-g-12 bottom-border">
+      <div class="form-field ui-g-2 ui-g-nopad ">
+        <i class="fa fa-envelope sign-in-icon" aria-hidden="true"></i>
+      </div>
+      <div class="form-field ui-g-10 ui-g-nopad">
+        <input formControlName="username" placeholder="{{usernamePlaceholder}}" class="full-width-transperent"
+          type="text" pInputText (keypress)="eventHandler($event)" />
+        <div class="form-errors"
+          *ngIf="signInForm.controls.username.errors  && (signInForm.controls.username.dirty || signInForm.controls.username.touched)">
+          <div [hidden]="!signInForm.controls.username.errors.required" translate>
+            <!-- email_required -->
+          </div>
+          <div [hidden]="!signInForm.controls.username.errors.maxlength" translate>
+            <!-- exceed_max_length -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-field ui-g-12 bottom-border">
+      <div class="form-field ui-g-2 ui-g-nopad ">
+        <i class="fa fa-key sign-in-icon" aria-hidden="true"></i>
+      </div>
+      <div class="form-field ui-g-10 ui-g-nopad">
+        <input pInputText type="password" formControlName="password" appNoWhiteSpace
+          placeholder="{{passwordPlaceHolder}}" class="full-width-transperent" (keypress)="eventHandler($event)" />
+        <div class="form-errors"
+          *ngIf="signInForm.controls.password.errors  && (signInForm.controls.password.dirty || signInForm.controls.password.touched)">
+          <div [hidden]="!signInForm.controls.password.errors.required" translate>
+            <!-- error_password_required -->
+          </div>
+          <div [hidden]="!signInForm.controls.password.errors.minlength" translate>
+            <!-- password_too_short -->
+          </div>
+          <div [hidden]="!signInForm.controls.password.errors.maxlength" translate>
+            <!-- exceed_max_length -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-field ui-g-12">
+      <a (click)="onForgotPassword()" class="forgot-password-link" translate>forgot_password</a>
+    </div>
+
+    <div class="form-field ui-g-12">
+      <div class="form-field ui-g-4 ui-g-nopad">
+        <img src=''>
+      </div>
+      <div class="form-field ui-g-4 ui-g-nopad">
+        <button pButton label="{{signInLabel}}" class='sign-in-buttons' type="button" [disabled]="!signInForm.valid"
+          (click)="doSignIn()"></button>
+      </div>
+
+    </div>
+  </form>
+</div>
