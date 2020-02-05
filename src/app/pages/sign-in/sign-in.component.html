@@ -1,13 +1,13 @@
-<div class="loginForm">   
-<h1>Please Login</h1>
+<div class="loginForm">
+  <h1>Please Login</h1>
   <form [formGroup]='signInForm' class="signInForm">
     <div class="form-field ui-g-12 bottom-border">
       <div class="form-field ui-g-2 ui-g-nopad ">
         <i class="fa fa-envelope sign-in-icon" aria-hidden="true"></i>
       </div>
       <div class="form-field ui-g-8 ui-g-nopad">
-        <input formControlName="username" placeholder="{{usernamePlaceholder}}" class="full-width-transperent input-border"
-          type="text" pInputText (keypress)="eventHandler($event)" />
+        <input formControlName="username" placeholder="{{usernamePlaceholder}}"
+          class="full-width-transperent input-border" type="text" pInputText (keypress)="eventHandler($event)" />
         <div class="form-errors"
           *ngIf="signInForm.controls.username.errors  && (signInForm.controls.username.dirty || signInForm.controls.username.touched)">
           <div [hidden]="!signInForm.controls.username.errors.required" translate>
@@ -56,6 +56,18 @@
       </div>
 
     </div>
+    <h5>Or</h5>
+    <div class="form-field ui-g-12">
+      <div class="ui-g-5">
+        <img width="300" style="max-width: 250px;width: 234px;" alt="Angular Logo"
+          src="assets/images/output-onlinepngtools.png">
+      </div>
+      <div class="ui-g-1"></div>
+      <div class="ui-g-5">
+        <img width="300" style="max-width: 233px;padding-top: 7px;" alt="Angular Logo"
+          src="assets/images/facebook-sign-in-button.png">
+      </div>
+    </div>
+
   </form>
 </div>
-

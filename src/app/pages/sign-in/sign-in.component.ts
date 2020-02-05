@@ -37,6 +37,8 @@ export class SignInComponent implements OnInit {
     // this.onSignInEmitter.emit(this.getLoginObject());
     // this.getLoginObject()
     this.addUser(this.getLoginObject());
+
+
   }
   getPostmanData() {
     this.commonBindingDataService.getPostmanData().subscribe(results => {
@@ -77,21 +79,27 @@ export class SignInComponent implements OnInit {
 
   addUser(signInData) {
     debugger
-    this.commonBindingDataService.addUser(signInData).subscribe(results => {
-      debugger
-      alert("Sign In successfully");
-      // results.forEach(element => {
-      //   if (element.id === document.userDetails.cityId) {
-      //     this.city = element.cityName;
-      //   }
-      // });
-    }, (error) => {
-      debugger
-      alert("Sign In Failure");
+    if (signInData.email == 'swap@test.com' && signInData.password == '123456') {
+       alert("success");
+       
+    }else{
+      alert('Failure')
+    }
+    // this.commonBindingDataService.addUser(signInData).subscribe(results => {
+    //   debugger
+    //   alert("Sign In successfully");
+    //   // results.forEach(element => {
+    //   //   if (element.id === document.userDetails.cityId) {
+    //   //     this.city = element.cityName;
+    //   //   }
+    //   // });
+    // }, (error) => {
+    //   debugger
+    //   alert("Sign In Failure");
 
-      // this.message = [];
-      // this.message.push({ severity: 'error', summary: 'error', detail: error.general[0].message });
-    });
+    //   // this.message = [];
+    //   // this.message.push({ severity: 'error', summary: 'error', detail: error.general[0].message });
+    // });
   }
 
   onForgotPassword() {
@@ -103,6 +111,7 @@ export class SignInComponent implements OnInit {
       this.onSignInEmitter.emit(this.getLoginObject());
     }
   }
+
   onSubmit(data) {
 
   }
