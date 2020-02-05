@@ -1,20 +1,20 @@
-<div class="loginForm">
+<div class="loginForm">   
 <h1>Please Login</h1>
-  <form [formGroup]='signInForm'>
+  <form [formGroup]='signInForm' class="signInForm">
     <div class="form-field ui-g-12 bottom-border">
       <div class="form-field ui-g-2 ui-g-nopad ">
         <i class="fa fa-envelope sign-in-icon" aria-hidden="true"></i>
       </div>
-      <div class="form-field ui-g-10 ui-g-nopad">
-        <input formControlName="username" placeholder="{{usernamePlaceholder}}" class="full-width-transperent"
+      <div class="form-field ui-g-8 ui-g-nopad">
+        <input formControlName="username" placeholder="{{usernamePlaceholder}}" class="full-width-transperent input-border"
           type="text" pInputText (keypress)="eventHandler($event)" />
         <div class="form-errors"
           *ngIf="signInForm.controls.username.errors  && (signInForm.controls.username.dirty || signInForm.controls.username.touched)">
           <div [hidden]="!signInForm.controls.username.errors.required" translate>
-            <!-- email_required -->
+            email_required
           </div>
           <div [hidden]="!signInForm.controls.username.errors.maxlength" translate>
-            <!-- exceed_max_length -->
+            exceed_max_length
           </div>
         </div>
       </div>
@@ -24,19 +24,19 @@
       <div class="form-field ui-g-2 ui-g-nopad ">
         <i class="fa fa-key sign-in-icon" aria-hidden="true"></i>
       </div>
-      <div class="form-field ui-g-10 ui-g-nopad">
+      <div class="form-field ui-g-8 ui-g-nopad">
         <input pInputText type="password" formControlName="password" appNoWhiteSpace
           placeholder="{{passwordPlaceHolder}}" class="full-width-transperent" (keypress)="eventHandler($event)" />
         <div class="form-errors"
           *ngIf="signInForm.controls.password.errors  && (signInForm.controls.password.dirty || signInForm.controls.password.touched)">
           <div [hidden]="!signInForm.controls.password.errors.required" translate>
-            <!-- error_password_required -->
+            error_password_required
           </div>
           <div [hidden]="!signInForm.controls.password.errors.minlength" translate>
-            <!-- password_too_short -->
+            password_too_short
           </div>
           <div [hidden]="!signInForm.controls.password.errors.maxlength" translate>
-            <!-- exceed_max_length -->
+            exceed_max_length
           </div>
         </div>
       </div>
@@ -58,3 +58,4 @@
     </div>
   </form>
 </div>
+

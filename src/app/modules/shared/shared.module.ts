@@ -6,9 +6,11 @@ import { TranslateModule, TranslateLoader, MissingTranslationHandler, TranslateS
 import { SwapTranslateService } from './services/swap-translate.service';
 import { MissingSwapTranslateService } from './services/missing-swap-translate.service';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
+import { LoaderComponent } from './components/loader/loader.component';
+// import { LoaderComponent } from './components/loader/loader/loader.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [LoaderComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,

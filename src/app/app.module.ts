@@ -7,8 +7,11 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/components/button/button';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { SharedModule } from './modules/shared/shared.module';
+import { LoginComponent } from './pages/login/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SwapTranslateService } from './modules/shared/services/swap-translate.service';
 
 
 
@@ -16,7 +19,8 @@ import { SharedModule } from './modules/shared/shared.module';
   declarations: [
     AppComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,13 @@ import { SharedModule } from './modules/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
-    TranslateModule.forRoot(),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: SwapTranslateService
+      },
+    }),
     SharedModule.forRoot()
   ],
 

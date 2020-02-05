@@ -1,6 +1,9 @@
 .loginForm {
   text-align: center;
 }
+.signInForm{
+  padding: 0 370px 0 370px;
+}
 
 .signin-box-container {
   background: url('/assets/images/background.png') no-repeat center center fixed;
@@ -12,100 +15,22 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-
-  /* .signin-box-inner-container {
-    display: table-cell;
-    vertical-align: middle;
-
-    .ui-panel {
-      .ui-panel-titlebar {
-        padding: 0;
-      }
-    }
-
-    .switch-btn {
-      color: $defaultTextColor;
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .signin-box {
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .logo-box {
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .bottom-border {
-      border-bottom: 1px solid #B8B8B8;
-    }
-
-    .forgot-password-link {
-      color: $defaultTextColor;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .ui-state-default {
-      border: 0;
-    }
-
-    .sign-in-buttons {
-      border-radius: 18px;
-      width: 100%;
-    }
-
-    input {
-      &:hover {
-        border: 0;
-      }
-
-      &:focus {
-        border: 0;
-      }
-    }
-
-    .read-more-button {
-      background: transparent;
-      border: 1px solid $white;
-      border-radius: 18px;
-      width: 75%;
-    }
-
-    .selected-menu {
-      background-color: $defaultThemeColor;
-      height: 4px;
-      padding: 0;
-    }
-
-    .float-left {
-      float: left;
-    }
-
-    .float-right {
-      float: right;
-    }
-
-    h2 {
-      color: $white;
-      font-weight: normal;
-      line-height: 2;
-    }
-
-    h4 {
-      color: $white;
-      font-weight: normal;
-      line-height: 2;
-    }
-
-    .term-condition {
-      margin: 15px 0;
-    }
-  } */
+}
+.form-field input[type='text'],input[type='password']{
+  border: 0px solid #E1E3E7;
+  
 }
 
+.input-border {
+  border: 0;
+}
+
+.form-errors {
+  color: red;
+  text-align: end;
+  width: 50%;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #b8b8b8;
+}

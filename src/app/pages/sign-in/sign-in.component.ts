@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonBindingServiceService } from 'src/app/modules/shared/services/common-binding-service.service';
 
@@ -11,7 +11,7 @@ export class SignInComponent implements OnInit {
   usernamePlaceholder;
   passwordPlaceHolder;
   signInLabel;
-
+  @Output() onSignInEmitter: EventEmitter<any> = new EventEmitter();
   signInForm = new FormGroup({
     username: new FormControl(),
     password: new FormControl()
@@ -35,25 +35,63 @@ export class SignInComponent implements OnInit {
 
   doSignIn() {
     // this.onSignInEmitter.emit(this.getLoginObject());
+    // this.getLoginObject()
+    this.addUser(this.getLoginObject());
+  }
+  getPostmanData() {
+    this.commonBindingDataService.getPostmanData().subscribe(results => {
+      debugger
+      // results.forEach(element => {
+      //   if (element.id === document.userDetails.cityId) {
+      //     this.city = element.cityName;
+      //   }
+      // });
+    }, (error) => {
+      debugger
+      // this.message = [];
+      // this.message.push({ severity: 'error', summary: 'error', detail: error.general[0].message });
+    });
   }
 
+
+
   getLoginObject() {
-    // const userName = this.signInForm.controls.username.value;
-    // let signInData = {};
-    // if (this.signInForm.controls.username.errors === null) {
-    //   signInData = {
-    //     'email': this.signInForm.controls.username.value,
-    //     'password': this.signInForm.controls.password.value,
-    //     'tenantId': AppSettings.TENANT
-    //   };
-    // } else {
-    //   signInData = {
-    //     'username': this.signInForm.controls.username.value,
-    //     'password': this.signInForm.controls.password.value,
-    //     'tenantId': AppSettings.TENANT
-    //   };
-    // }
-    // return signInData;
+    const userName = this.signInForm.controls.username.value;
+    let signInData = {};
+    if (this.signInForm.controls.username.errors === null) {
+      signInData = {
+        'email': this.signInForm.controls.username.value,
+        'password': this.signInForm.controls.password.value,
+        'tenantId': '12325232'
+      };
+    } else {
+      signInData = {
+        'username': this.signInForm.controls.username.value,
+        'password': this.signInForm.controls.password.value,
+        'tenantId': '123365456'
+      };
+    }
+    debugger
+    return signInData;
+  }
+
+  addUser(signInData) {
+    debugger
+    this.commonBindingDataService.addUser(signInData).subscribe(results => {
+      debugger
+      alert("Sign In successfully");
+      // results.forEach(element => {
+      //   if (element.id === document.userDetails.cityId) {
+      //     this.city = element.cityName;
+      //   }
+      // });
+    }, (error) => {
+      debugger
+      alert("Sign In Failure");
+
+      // this.message = [];
+      // this.message.push({ severity: 'error', summary: 'error', detail: error.general[0].message });
+    });
   }
 
   onForgotPassword() {
@@ -61,9 +99,9 @@ export class SignInComponent implements OnInit {
   }
 
   eventHandler(event) {
-    // if (event.keyCode === 13) {
-    //   this.onSignInEmitter.emit(this.getLoginObject());
-    // }
+    if (event.keyCode === 13) {
+      this.onSignInEmitter.emit(this.getLoginObject());
+    }
   }
   onSubmit(data) {
 

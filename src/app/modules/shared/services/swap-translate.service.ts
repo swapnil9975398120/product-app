@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SwapTranslateService implements TranslateLoader{
+export class SwapTranslateService implements TranslateLoader {
 
   getTranslation(lang: string): Observable<any> {
     return of({
@@ -16,7 +16,9 @@ export class SwapTranslateService implements TranslateLoader{
       error_password_required: 'Password is required.',
       email_required: ' E-mail is required.',
       exceed_max_length: 'Max length is exceed.',
-      label_sign_in: 'Sign In'
+      label_sign_in: 'Sign In',
+      password_too_short: 'Password is too short',
+      forgot_password: 'Forgot Password'
     });
   }
 
