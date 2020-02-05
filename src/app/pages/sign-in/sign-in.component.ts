@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonBindingServiceService } from 'src/app/modules/shared/services/common-binding-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,7 +21,8 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private commonBindingDataService: CommonBindingServiceService
+    private commonBindingDataService: CommonBindingServiceService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -80,9 +82,10 @@ export class SignInComponent implements OnInit {
   addUser(signInData) {
     debugger
     if (signInData.email == 'swap@test.com' && signInData.password == '123456') {
-       alert("success");
-       
-    }else{
+      alert("success");
+      this.router.navigate(['corporate-booking/booking-details']);
+
+    } else {
       alert('Failure')
     }
     // this.commonBindingDataService.addUser(signInData).subscribe(results => {
