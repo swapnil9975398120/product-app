@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommonBindingServiceService } from 'src/app/modules/shared/services/common-binding-service.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -23,6 +23,7 @@ export class SignInComponent implements OnInit {
     private formBuilder: FormBuilder,
     private commonBindingDataService: CommonBindingServiceService,
     private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -33,6 +34,10 @@ export class SignInComponent implements OnInit {
       username: ['', [Validators.required, Validators.maxLength(50)]],
       password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
     });
+    this.router.url;
+    if (this.router.url == 'admin-dashboard') {
+      this.commonBindingDataService.displayHeader = false;
+    }
   }
 
   doSignIn() {
@@ -40,24 +45,7 @@ export class SignInComponent implements OnInit {
     // this.getLoginObject()
     this.addUser(this.getLoginObject());
 
-
   }
-  getPostmanData() {
-    this.commonBindingDataService.getPostmanData().subscribe(results => {
-      debugger
-      // results.forEach(element => {
-      //   if (element.id === document.userDetails.cityId) {
-      //     this.city = element.cityName;
-      //   }
-      // });
-    }, (error) => {
-      debugger
-      // this.message = [];
-      // this.message.push({ severity: 'error', summary: 'error', detail: error.general[0].message });
-    });
-  }
-
-
 
   getLoginObject() {
     const userName = this.signInForm.controls.username.value;
@@ -75,17 +63,18 @@ export class SignInComponent implements OnInit {
         'tenantId': '123365456'
       };
     }
-    debugger
     return signInData;
   }
 
   addUser(signInData) {
-    debugger
     if (signInData.email == 'swap@test.com' && signInData.password == '123456') {
-      alert("success");
-      this.router.navigate(['corporate-booking/booking-details']);
+      this.router.navigate(['admin-dashboard']);
+      this.commonBindingDataService.displayHeader = false;
+      ;
+
 
     } else {
+
       alert('Failure')
     }
     // this.commonBindingDataService.addUser(signInData).subscribe(results => {

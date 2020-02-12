@@ -7,7 +7,7 @@ import { RestApiService } from './rest-api.service';
   providedIn: 'root'
 })
 export class CommonBindingServiceService {
-
+  public displayHeader = true;
   constructor(
     private translateService: TranslateService,
     private restApiService: RestApiService
@@ -20,7 +20,6 @@ export class CommonBindingServiceService {
     });
     return select;
   }
-
 
   getPostmanData(): Observable<any> {
     return this.restApiService.get('https://dda92964-fa4e-41da-bbed-4d808bfb7408.mock.pstmn.io/signin', 'page-center');
